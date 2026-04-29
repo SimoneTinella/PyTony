@@ -4,7 +4,8 @@ import argparse
 from pathlib import Path
 import sys
 
-from .runtime import run_path, transpile_path
+from .compiler import PytonySyntaxError
+from .runtime import check_path, run_path, transpile_path
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -24,6 +25,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     transpile_parser.add_argument("path", help="Percorso del file Pytony")
 
+    check_parser = subparsers.add_parser(
+        "check",
+        help="Valida un file Pytony senza eseguirlo",
+    )
+    check_parser.add_argument("path", help="Percorso del file Pytony o Python")
+
     return parser
 
 
@@ -37,6 +44,15 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "transpile":
         sys.stdout.write(transpile_path(Path(args.path)))
+        return 0
+
+    if args.command == "check":
+        try:
+            check_path(Path(args.path))
+        except (PytonySyntaxError, SyntaxError) as error:
+            sys.stderr.write(f"{error}\n")
+            return 1
+        sys.stdout.write(f"OK: {args.path}\n")
         return 0
 
     parser.error(f"Comando non supportato: {args.command}")

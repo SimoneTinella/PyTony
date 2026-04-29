@@ -1,0 +1,36 @@
+{
+  "name": "pytony-language",
+  "displayName": "Pytony Language Support",
+  "description": "Syntax highlighting e file association per il linguaggio Pytony.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "pytony",
+        "aliases": [
+          "Pytony",
+          "pytony"
+        ],
+        "extensions": [
+          ".pytony"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pytony",
+        "scopeName": "source.pytony",
+        "path": "./syntaxes/pytony.tmLanguage.json"
+      }
+    ]
+  }
+}

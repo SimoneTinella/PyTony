@@ -1,15 +1,23 @@
+Metadata-Version: 2.1
+Name: pytony
+Version: 0.1.0
+Summary: Pytony: un linguaggio ironico costruito sopra Python.
+Author: Simon Etinella
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
 ![Pytony](<pytony.png>)
 
 # Pytony
 
 Pytony e un linguaggio di programmazione costruito sopra Python, ma parlato come se Python fosse finito dentro una canzone di Tony Pitony.
 
-Non cerca piu di essere solo Python con gli alias. Oggi gira su Python, ma comincia ad avere costrutti suoi:
+Non e un linguaggio alternativo a Python. E Python con un'altra voce:
 
-- runtime Python, voce Pytony
+- totalmente compatibile con Python
 - eseguibile tramite un transpiler leggero
 - pieno di alias in riferimento al personaggio
-- dotato di primi costrutti esclusivi che non esistono in Python puro.
+- pensato per trasformare la sintassi in un personaggio, non solo in una gag.
 
 ## Cos'e
 
@@ -67,8 +75,7 @@ Pytony segue cinque regole semplici:
 2. Ogni keyword Python ha un alias Pytony unico.
 3. I built-in piu usati possono avere un nome piu fedele al personaggio.
 4. Nei file `.pytony`, il Python puro non si usa se esiste gia la forma Pytony.
-5. Quando serve, Pytony puo introdurre costrutti suoi e abbassarli in Python.
-6. Il lessico deve ricordare Tony Pitony, non un generico linguaggio comico.
+5. Il lessico deve ricordare Tony Pitony, non un generico linguaggio comico.
 
 ## Vocabolario Base
 
@@ -95,40 +102,6 @@ Alcuni esempi del lessico canonico:
 | `portafoglio` | `dict` |
 
 Il manifesto stilistico del progetto e in [PYTONY_MANIFESTO.md](/Users/simonetinella/Repositories/PyTony/PYTONY_MANIFESTO.md).
-La specifica del linguaggio e in [PYTONY_0_1_SPEC.md](/Users/simonetinella/Repositories/PyTony/PYTONY_0_1_SPEC.md).
-
-## Costrutti Esclusivi
-
-Pytony ora ha anche una prima triade di costrutti non presenti in Python puro.
-
-`ritornello N:`
-
-Ripete un blocco `N` volte. E il modo Pytony di dire "fammi tornare ancora qui".
-
-```py
-ritornello 3:
-    spara_minchiate("ancora")
-```
-
-`duetto a, b con xs, ys:`
-
-Scorre piu sequenze insieme come un loop su `zip(...)`, ma con una sintassi piu narrativa.
-
-```py
-duetto nome, coro con nomi, cori:
-    spara_minchiate(nome, coro)
-```
-
-`ancora_una_volta condizione:`
-
-Esegue il blocco almeno una volta e poi continua finche la condizione regge. In pratica e il primo vero `do...while` di Pytony.
-
-```py
-contatore = 0
-ancora_una_volta contatore < 3:
-    spara_minchiate(contatore)
-    contatore += 1
-```
 
 ## Cosa Offre Oggi
 
@@ -140,7 +113,6 @@ In questa versione Pytony permette gia di:
 - validare un file con `pytony check`;
 - usare alias per tutte le keyword Python;
 - usare alias per un primo set di built-in molto comuni;
-- usare costrutti esclusivi come `ritornello`, `duetto` e `ancora_una_volta`;
 - rifiutare nomi Python puri come `if`, `print`, `len` e `True` dentro i file `.pytony`;
 - riscrivere correttamente gli alias anche dentro le f-string.
 
@@ -151,7 +123,6 @@ python3 -m pip install -e .
 pytony run examples/hello.pytony
 pytony run examples/mood.pytony
 pytony run examples/builtins.pytony
-pytony run examples/exclusive.pytony
 pytony transpile examples/hello.pytony
 pytony check examples/hello.pytony
 pytony run examples/python_backend.py
@@ -170,30 +141,13 @@ Puoi vedere il linguaggio in azione qui:
 - [examples/hello.pytony](/Users/simonetinella/Repositories/PyTony/examples/hello.pytony)
 - [examples/mood.pytony](/Users/simonetinella/Repositories/PyTony/examples/mood.pytony)
 - [examples/builtins.pytony](/Users/simonetinella/Repositories/PyTony/examples/builtins.pytony)
-- [examples/exclusive.pytony](/Users/simonetinella/Repositories/PyTony/examples/exclusive.pytony)
 - [examples/python_backend.py](/Users/simonetinella/Repositories/PyTony/examples/python_backend.py)
-
-## Editor Support
-
-Pytony ora include una prima integrazione per VS Code in [editors/vscode](/Users/simonetinella/Repositories/PyTony/editors/vscode/README.md).
-
-Questa integrazione aggiunge:
-
-- riconoscimento dei file `.pytony`;
-- syntax highlighting per alias, built-in e costrutti esclusivi;
-- regole base di indentazione e auto-closing.
-
-I file principali sono:
-
-- [editors/vscode/package.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/package.json)
-- [editors/vscode/language-configuration.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/language-configuration.json)
-- [editors/vscode/syntaxes/pytony.tmLanguage.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/syntaxes/pytony.tmLanguage.json)
 
 ## Architettura
 
 Il cuore del progetto e piccolo e diretto:
 
-- [pytony/compiler.py](/Users/simonetinella/Repositories/PyTony/pytony/compiler.py): trasforma il lessico Pytony e i costrutti esclusivi in Python.
+- [pytony/compiler.py](/Users/simonetinella/Repositories/PyTony/pytony/compiler.py): trasforma il lessico Pytony in Python.
 - [pytony/runtime.py](/Users/simonetinella/Repositories/PyTony/pytony/runtime.py): esegue il codice transpiliato.
 - [pytony/importer.py](/Users/simonetinella/Repositories/PyTony/pytony/importer.py): abilita l'import di moduli `.pytony`.
 - [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run` e `transpile`.

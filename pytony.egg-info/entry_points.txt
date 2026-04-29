@@ -1,0 +1,2 @@
+[console_scripts]
+pytony = pytony.cli:main

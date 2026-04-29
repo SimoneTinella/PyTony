@@ -1,0 +1,16 @@
+nomi = ["Tony", "Pitony", "Pytony"]
+cori = ["oh", "ah", "uh"]
+
+spara_minchiate("Ritornello iniziale")
+ritornello 2:
+    spara_minchiate("Ancora una volta")
+
+spara_minchiate("Parte il duetto")
+duetto nome, coro con nomi, cori:
+    spara_minchiate(f"{coro}! {nome}")
+
+contatore = 0
+spara_minchiate("Gran finale")
+ancora_una_volta contatore < 3:
+    spara_minchiate(f"Giro numero {contatore}")
+    contatore += 1

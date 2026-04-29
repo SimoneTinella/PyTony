@@ -1,0 +1,235 @@
+{
+  "name": "Pytony",
+  "scopeName": "source.pytony",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#decorators"
+    },
+    {
+      "include": "#exclusive-constructs"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#builtins"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#function-definition"
+    },
+    {
+      "include": "#class-definition"
+    },
+    {
+      "include": "#imports"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#function-call"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.pytony",
+          "begin": "#",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.pytony"
+            }
+          },
+          "end": "$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.multi.pytony",
+          "begin": "([rRuUbBfF]{0,2})(\"\"\"|''')",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.string.pytony"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.pytony"
+            }
+          },
+          "end": "(\\2)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.pytony"
+            }
+          }
+        },
+        {
+          "name": "string.quoted.single.pytony",
+          "begin": "([rRuUbBfF]{0,2})(\"|')",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.type.string.pytony"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin.pytony"
+            }
+          },
+          "end": "(?<!\\\\)(\\2)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "decorators": {
+      "patterns": [
+        {
+          "name": "meta.annotation.pytony",
+          "match": "^\\s*(@[A-Za-z_][A-Za-z0-9_\\.]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.annotation.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "exclusive-constructs": {
+      "patterns": [
+        {
+          "name": "meta.exclusive.ritornello.pytony",
+          "match": "^(\\s*)(ritornello)\\b",
+          "captures": {
+            "2": {
+              "name": "keyword.control.repeat.pytony"
+            }
+          }
+        },
+        {
+          "name": "meta.exclusive.duetto.pytony",
+          "match": "^(\\s*)(duetto)\\b|\\b(con)\\b(?=.*:)",
+          "captures": {
+            "2": {
+              "name": "keyword.control.loop.pytony"
+            },
+            "3": {
+              "name": "keyword.operator.word.pytony"
+            }
+          }
+        },
+        {
+          "name": "meta.exclusive.ancora-una-volta.pytony",
+          "match": "^(\\s*)(ancora_una_volta)\\b",
+          "captures": {
+            "2": {
+              "name": "keyword.control.repeat.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.pytony",
+          "match": "\\b(mica_vero|solo_una_macchia|lapalissiano|e_poi|come_monet|te_l_ho_detto|fuori_piove|aspetta_amore|fine_del_mondo|uomo_cannone|anche_stasera|e_se_invece|senno|ma_ehi|a_dopo_amore|gira_il_circo|dal_divano|su_tutta_la_terra|e_se|you_might_also_like|nell_alta_marea|sei_proprio|colpo_di_scena|vicoli_stretti|mica|oppure|fai_finta|mentre_riposi|strofa|mi_strappo|interludio|bridge|scoppia|restero|sperimentiamo|con_la_coperta|sfiora_le_stelle)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.pytony",
+          "match": "\\b(spara_minchiate|pronto_amore|fai_la_pesata|viaggio_lontano|apri_il_portafoglio|schizzo_monet|duecento_euro|alta_marea|lapalissiano_o_mica|popcorn|portafoglio|mostri|coperta_calda|chi_siamo|lavarei_piatti|meno_rossi|uomo_migliore|contale_tutte|dammi_il_cuore|di_lato|in_fusoliera|tutti_i_mostri|pure_uno|senza_arrossire|a_crepapelle)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.pytony",
+          "match": "\\b(lapalissiano|mica_vero|solo_una_macchia|oh_oh)\\b"
+        }
+      ]
+    },
+    "function-definition": {
+      "patterns": [
+        {
+          "name": "meta.function.pytony",
+          "match": "\\b(strofa)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.function.pytony"
+            },
+            "2": {
+              "name": "entity.name.function.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "class-definition": {
+      "patterns": [
+        {
+          "name": "meta.class.pytony",
+          "match": "\\b(uomo_cannone)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.class.pytony"
+            },
+            "2": {
+              "name": "entity.name.type.class.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "imports": {
+      "patterns": [
+        {
+          "name": "meta.import.pytony",
+          "match": "\\b(you_might_also_like|dal_divano|come_monet)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.import.pytony"
+            }
+          }
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.pytony",
+          "match": "\\b\\d+(?:_\\d+)*(?:\\.\\d+(?:_\\d+)*)?\\b"
+        }
+      ]
+    },
+    "function-call": {
+      "patterns": [
+        {
+          "name": "entity.name.function.call.pytony",
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.pytony"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
