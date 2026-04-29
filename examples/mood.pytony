@@ -1,0 +1,9 @@
+strofa saluta(nome):
+    spara_minchiate(f"Oh, {schizzo_monet(nome)}")
+
+
+contatore = 0
+spara_minchiate("L'uomo cannone entra in scena")
+mentre_riposi contatore < 3:
+    saluta("Pytony")
+    contatore += 1

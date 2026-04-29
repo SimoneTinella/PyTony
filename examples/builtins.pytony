@@ -1,0 +1,6 @@
+numeri = popcorn(viaggio_lontano(1, 6))
+spara_minchiate(f"Quanti sono? {fai_la_pesata(numeri)}")
+spara_minchiate(f"Somma totale: {lavarei_piatti(numeri)}")
+spara_minchiate(f"Uomo migliore: {uomo_migliore(numeri)}")
+spara_minchiate(f"Lista al contrario: {popcorn(di_lato(numeri))}")
+spara_minchiate(f"Tutti positivi? {tutti_i_mostri(numero > 0 gira_il_circo numero nell_alta_marea numeri)}")

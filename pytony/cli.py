@@ -1,0 +1,47 @@
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import sys
+
+from .runtime import run_path, transpile_path
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="pytony",
+        description="Esegui o transpila file Pytony compatibili con Python.",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    run_parser = subparsers.add_parser("run", help="Esegui un file .pytony")
+    run_parser.add_argument("path", help="Percorso del file Pytony")
+    run_parser.add_argument("args", nargs=argparse.REMAINDER, help="Argomenti per lo script")
+
+    transpile_parser = subparsers.add_parser(
+        "transpile",
+        help="Mostra il Python generato da un file .pytony",
+    )
+    transpile_parser.add_argument("path", help="Percorso del file Pytony")
+
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    if args.command == "run":
+        run_path(Path(args.path), args.args)
+        return 0
+
+    if args.command == "transpile":
+        sys.stdout.write(transpile_path(Path(args.path)))
+        return 0
+
+    parser.error(f"Comando non supportato: {args.command}")
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

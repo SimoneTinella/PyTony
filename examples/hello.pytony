@@ -1,0 +1,6 @@
+spara_minchiate("Ciao da Pytony")
+
+e_se lapalissiano:
+    spara_minchiate("Sto girando sopra Python, ma con piu personalita")
+senno:
+    spara_minchiate("Questa riga non dovrebbe uscire")
