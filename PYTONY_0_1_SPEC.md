@@ -1,16 +1,16 @@
-# Pytony 0.1 Specification
+# Specifica di Pytony 0.1
 
 ## Stato Del Documento
 
 Questo documento definisce la specifica di riferimento di `Pytony 0.1`.
 
-`Pytony 0.1` e una versione ibrida:
+`Pytony 0.1` è una versione ibrida:
 
 - ha una superficie sintattica propria;
 - introduce costrutti esclusivi del linguaggio;
 - si abbassa ancora verso Python per l'esecuzione finale.
 
-Quando questa specifica e in conflitto con il comportamento accidentale del transpiler, la specifica descrive l'intento del linguaggio e il repo deve convergere verso di essa.
+Quando questa specifica è in conflitto con il comportamento accidentale del transpiler, la specifica descrive l'intento del linguaggio e il repo deve convergere verso di essa.
 
 ## Obiettivi Di Pytony 0.1
 
@@ -21,7 +21,7 @@ Quando questa specifica e in conflitto con il comportamento accidentale del tran
 - eseguibile sopra il runtime Python senza VM propria;
 - abbastanza stabile da supportare script, esempi e primi strumenti editor.
 
-Non e obiettivo di `Pytony 0.1` essere ancora indipendente dal runtime Python.
+Non è obiettivo di `Pytony 0.1` essere ancora indipendente dal runtime Python.
 
 ## Modello Di Esecuzione
 
@@ -39,7 +39,7 @@ Le implementazioni di riferimento sono in:
 - [pytony/lowering.py](/Users/simonetinella/Repositories/PyTony/pytony/lowering.py)
 - [pytony/runtime.py](/Users/simonetinella/Repositories/PyTony/pytony/runtime.py)
 
-## File E Modalita
+## File E Modalità
 
 ### File `.pytony`
 
@@ -47,9 +47,9 @@ I file con estensione `.pytony` sono file `Pytony` veri e propri.
 
 Per questi file:
 
-- vale la modalita strict;
-- il lessico canonico Pytony e obbligatorio quando esiste un alias ufficiale;
-- l'import hook di `Pytony` puo caricare altri moduli `.pytony`.
+- vale la modalità strict;
+- il lessico canonico Pytony è obbligatorio quando esiste un alias ufficiale;
+- l'import hook di `Pytony` può caricare altri moduli `.pytony`.
 
 ### File `.py`
 
@@ -57,7 +57,7 @@ I file `.py` restano file Python normali.
 
 Possono essere eseguiti tramite il runtime del progetto, ma:
 
-- non sono in modalita strict;
+- non sono in modalità strict;
 - non hanno l'obbligo di usare il lessico Pytony;
 - non fanno parte della sintassi definita da questa specifica.
 
@@ -65,7 +65,7 @@ Possono essere eseguiti tramite il runtime del progetto, ma:
 
 ### Encoding
 
-Il testo sorgente e interpretato in UTF-8.
+Il testo sorgente è interpretato in UTF-8.
 
 ### Commenti
 
@@ -85,22 +85,22 @@ Nelle f-string, le espressioni dentro `{...}` vengono transpiliate come codice P
 
 ### Indentazione
 
-L'indentazione e significativa come in Python.
+L'indentazione è significativa come in Python.
 I blocchi sono introdotti da `:` e definiti dal livello di indentazione successivo.
 
 ### Nomi Riservati
 
 In un file `.pytony`, i nomi elencati come keyword o built-in canonici di Pytony vanno considerati riservati al linguaggio.
 
-In piu, i nomi interni che iniziano con `__pytony_ritornello_` sono riservati all'implementazione e non vanno usati intenzionalmente dal programma utente.
+In più, i nomi interni che iniziano con `__pytony_ritornello_` sono riservati all'implementazione e non vanno usati intenzionalmente dal programma utente.
 
-## Modalita Strict
+## Modalità Strict
 
-La modalita strict si applica ai file `.pytony`.
+La modalità strict si applica ai file `.pytony`.
 
 Regola:
 
-- se esiste un alias Pytony canonico per una keyword o un built-in Python supportato, la forma Python pura non e ammessa nel sorgente `.pytony`.
+- se esiste un alias Pytony canonico per una keyword o un built-in Python supportato, la forma Python pura non è ammessa nel sorgente `.pytony`.
 
 Esempi non ammessi in `.pytony`:
 
@@ -193,7 +193,7 @@ Ogni keyword Python ha un alias Pytony canonico.
 
 ## Struttura Dei Programmi
 
-Un modulo `Pytony 0.1` e una sequenza ordinata di statement.
+Un modulo `Pytony 0.1` è una sequenza ordinata di statement.
 
 Gli statement supportati in forma nativa o stabilizzata sono:
 
@@ -242,13 +242,13 @@ Gli statement supportati in forma nativa o stabilizzata sono:
 - generator expression;
 - `colpo_di_scena`.
 
-Le espressioni compatibili con Python ma non ancora rappresentate pienamente dall'AST nativo possono essere accettate in una modalita transizionale implementation-defined.
+Le espressioni compatibili con Python ma non ancora rappresentate pienamente dall'AST nativo possono essere accettate in una modalità transizionale implementation-defined.
 
 ## Statement Principali
 
 ### Condizionali
 
-La sintassi canonica e:
+La sintassi canonica è:
 
 ```py
 e_se condizione:
@@ -266,7 +266,7 @@ Semantica:
 
 ### Loop `mentre_riposi`
 
-La sintassi canonica e:
+La sintassi canonica è:
 
 ```py
 mentre_riposi condizione:
@@ -275,11 +275,11 @@ senno:
     ...
 ```
 
-La clausola `senno` e opzionale e segue la semantica di `while ... else` di Python.
+La clausola `senno` è opzionale e segue la semantica di `while ... else` di Python.
 
 ### Loop `gira_il_circo`
 
-La sintassi canonica e:
+La sintassi canonica è:
 
 ```py
 gira_il_circo elemento nell_alta_marea iterabile:
@@ -288,7 +288,7 @@ senno:
     ...
 ```
 
-La clausola `senno` e opzionale e segue la semantica di `for ... else` di Python.
+La clausola `senno` è opzionale e segue la semantica di `for ... else` di Python.
 
 ### Funzioni
 
@@ -338,7 +338,7 @@ a_dopo_amore:
     spara_minchiate("chiusura")
 ```
 
-La semantica e quella di `try` / `except` / `else` / `finally` di Python.
+La semantica è quella di `try` / `except` / `else` / `finally` di Python.
 
 ### Context Manager
 
@@ -349,7 +349,7 @@ con_la_coperta apri_il_portafoglio("demo.txt") come_monet handle:
     spara_minchiate(handle.read())
 ```
 
-La semantica e quella di `with`.
+La semantica è quella di `with`.
 
 ### Pattern Matching
 
@@ -370,7 +370,7 @@ interludio evento:
 ```
 
 `Pytony 0.1` considera stabile la struttura dello statement `match`.
-La copertura dei pattern e parzialmente nativa e parzialmente transizionale.
+La copertura dei pattern è parzialmente nativa e parzialmente transizionale.
 
 ## Pattern Supportati
 
@@ -434,7 +434,7 @@ duetto target1, target2 con iterabile1, iterabile2:
 
 Semantica:
 
-- scorre piu iterabili in parallelo;
+- scorre più iterabili in parallelo;
 - si comporta come un `for` su `zip(...)`;
 - il binding dei target segue la semantica Python del target di un `for`.
 
@@ -465,7 +465,7 @@ Semantica:
 
 - il blocco viene eseguito almeno una volta;
 - dopo ogni iterazione viene valutata `condizione`;
-- se la condizione e falsa, il loop termina.
+- se la condizione è falsa, il loop termina.
 
 Equivalenza di riferimento:
 
@@ -513,26 +513,26 @@ Gli errori di `Pytony 0.1` si dividono in due famiglie:
 - errori lessicali o sintattici del linguaggio, esposti come `PytonySyntaxError` in strict mode;
 - errori Python sollevati dal codice abbassato o dal runtime.
 
-Il parser nativo di riferimento fornisce gia, per molti casi:
+Il parser nativo di riferimento fornisce già, per molti casi:
 
 - messaggio in lessico Pytony;
 - riga;
 - colonna;
 - puntatore visuale.
 
-La forma esatta dei messaggi di errore non e ancora completamente standardizzata e resta implementation-defined, ma il contenuto semantico dell'errore deve restare comprensibile in termini Pytony.
+La forma esatta dei messaggi di errore non è ancora completamente standardizzata e resta implementation-defined, ma il contenuto semantico dell'errore deve restare comprensibile in termini Pytony.
 
-## Compatibilita Con Python
+## Compatibilità Con Python
 
-La compatibilita di `Pytony 0.1` con Python va intesa cosi:
+La compatibilità di `Pytony 0.1` con Python va intesa così:
 
-- il codice generato e Python valido;
-- il runtime di esecuzione e Python;
+- il codice generato è Python valido;
+- il runtime di esecuzione è Python;
 - le strutture semantiche di base seguono Python;
-- un file `.pytony` non coincide con un file Python arbitrario, perche in strict mode impone il vocabolario Pytony.
+- un file `.pytony` non coincide con un file Python arbitrario, perché in strict mode impone il vocabolario Pytony.
 
-Quindi `Pytony 0.1` non e "Python con qualsiasi sintassi Python ammessa".
-E "un linguaggio che si abbassa a Python".
+Quindi `Pytony 0.1` non è "Python con qualsiasi sintassi Python ammessa".
+È "un linguaggio che si abbassa a Python".
 
 ## Zone Transizionali
 
@@ -543,18 +543,18 @@ Le aree seguenti non sono ancora completamente chiuse a livello di specifica:
 - alcune forme molto ricche di annotazioni, parametri o combinazioni espressive rare;
 - dettagli di formattazione del codice generato.
 
-In queste zone, `Pytony 0.1` accetta un comportamento implementation-defined purche:
+In queste zone, `Pytony 0.1` accetta un comportamento implementation-defined purché:
 
 - non contraddica il lessico canonico;
-- non rompa la modalita strict;
+- non rompa la modalità strict;
 - non tradisca la semantica Python di riferimento.
 
-## Garanzie Di Stabilita
+## Garanzie Di Stabilità
 
 Per `Pytony 0.1` sono da considerare stabili:
 
 - estensione `.pytony`;
-- modalita strict per i file `.pytony`;
+- modalità strict per i file `.pytony`;
 - vocabolario canonico elencato in questa specifica;
 - costrutti esclusivi `ritornello`, `duetto`, `ancora_una_volta`;
 - comandi principali `run`, `check`, `transpile`;

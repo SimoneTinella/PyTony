@@ -2,16 +2,16 @@
 
 # Pytony
 
-Pytony e un linguaggio di programmazione costruito sopra Python, ma parlato come se Python fosse finito dentro una canzone di Tony Pitony.
+Pytony è un linguaggio di programmazione costruito sopra Python, ma parlato come se Python fosse finito dentro una canzone di Tony Pitony.
 
-Non cerca piu di essere solo Python con gli alias. Oggi gira su Python, ma comincia ad avere costrutti suoi:
+Non cerca più di essere solo Python con gli alias. Oggi gira su Python, ma comincia ad avere costrutti suoi:
 
 - runtime Python, voce Pytony
 - eseguibile tramite un transpiler leggero
 - pieno di alias in riferimento al personaggio
 - dotato di primi costrutti esclusivi che non esistono in Python puro.
 
-## Cos'e
+## Cos'è
 
 Un file `.pytony` viene letto da Pytony, trasformato in Python valido ed eseguito subito dopo.
 
@@ -20,8 +20,8 @@ Se vuoi scrivere Python puro, puoi continuare a farlo in file `.py`.
 
 Questo permette di avere due cose insieme:
 
-- la solidita del runtime Python;
-- una superficie sintattica molto piu narrativa, pop e teatrale.
+- la solidità del runtime Python;
+- una superficie sintattica molto più narrativa, pop e teatrale.
 
 ## La Voce Di Pytony
 
@@ -32,8 +32,8 @@ Pytony prende tono, immagini e ritmo dai materiali usati per costruire il proget
 - melodramma, spacconeria, romanticismo sabotato e assurdo pop;
 - frasi che suonano come titolo di strofa, ritornello o interludio.
 
-L'obiettivo non e sembrare elegante.
-L'obiettivo e sembrare riconoscibile.
+L'obiettivo non è sembrare elegante.
+L'obiettivo è sembrare riconoscibile.
 
 ## Come Si Legge
 
@@ -43,31 +43,31 @@ Ecco un programma Pytony:
 spara_minchiate("Ciao da Pytony")
 
 e_se lapalissiano:
-    spara_minchiate("Sto girando sopra Python, ma con piu personalita")
+    spara_minchiate("Sto girando sopra Python, ma con più personalità")
 senno:
     spara_minchiate("Questa riga non dovrebbe uscire")
 ```
 
-Il Python generato e:
+Il Python generato è:
 
 ```py
 print("Ciao da Pytony")
 
 if True:
-    print("Sto girando sopra Python, ma con piu personalita")
+    print("Sto girando sopra Python, ma con più personalità")
 else:
     print("Questa riga non dovrebbe uscire")
 ```
 
 ## Principi Del Linguaggio
 
-Pytony segue cinque regole semplici:
+Pytony segue sei regole semplici:
 
 1. Python resta il backend reale.
 2. Ogni keyword Python ha un alias Pytony unico.
-3. I built-in piu usati possono avere un nome piu fedele al personaggio.
-4. Nei file `.pytony`, il Python puro non si usa se esiste gia la forma Pytony.
-5. Quando serve, Pytony puo introdurre costrutti suoi e abbassarli in Python.
+3. I built-in più usati possono avere un nome più fedele al personaggio.
+4. Nei file `.pytony`, il Python puro non si usa se esiste già la forma Pytony.
+5. Quando serve, Pytony può introdurre costrutti suoi e abbassarli in Python.
 6. Il lessico deve ricordare Tony Pitony, non un generico linguaggio comico.
 
 ## Vocabolario Base
@@ -94,8 +94,8 @@ Alcuni esempi del lessico canonico:
 | `popcorn` | `list` |
 | `portafoglio` | `dict` |
 
-Il manifesto stilistico del progetto e in [PYTONY_MANIFESTO.md](/Users/simonetinella/Repositories/PyTony/PYTONY_MANIFESTO.md).
-La specifica del linguaggio e in [PYTONY_0_1_SPEC.md](/Users/simonetinella/Repositories/PyTony/PYTONY_0_1_SPEC.md).
+Il manifesto stilistico del progetto è in [PYTONY_MANIFESTO.md](/Users/simonetinella/Repositories/PyTony/PYTONY_MANIFESTO.md).
+La specifica del linguaggio è in [PYTONY_0_1_SPEC.md](/Users/simonetinella/Repositories/PyTony/PYTONY_0_1_SPEC.md).
 
 ## Costrutti Esclusivi
 
@@ -103,7 +103,7 @@ Pytony ora ha anche una prima triade di costrutti non presenti in Python puro.
 
 `ritornello N:`
 
-Ripete un blocco `N` volte. E il modo Pytony di dire "fammi tornare ancora qui".
+Ripete un blocco `N` volte. È il modo Pytony di dire "fammi tornare ancora qui".
 
 ```py
 ritornello 3:
@@ -112,7 +112,7 @@ ritornello 3:
 
 `duetto a, b con xs, ys:`
 
-Scorre piu sequenze insieme come un loop su `zip(...)`, ma con una sintassi piu narrativa.
+Scorre più sequenze insieme come un loop su `zip(...)`, ma con una sintassi più narrativa.
 
 ```py
 duetto nome, coro con nomi, cori:
@@ -121,7 +121,7 @@ duetto nome, coro con nomi, cori:
 
 `ancora_una_volta condizione:`
 
-Esegue il blocco almeno una volta e poi continua finche la condizione regge. In pratica e il primo vero `do...while` di Pytony.
+Esegue il blocco almeno una volta e poi continua finché la condizione regge. In pratica è il primo vero `do...while` di Pytony.
 
 ```py
 contatore = 0
@@ -132,7 +132,7 @@ ancora_una_volta contatore < 3:
 
 ## Cosa Offre Oggi
 
-In questa versione Pytony permette gia di:
+In questa versione Pytony permette già di:
 
 - eseguire file `.pytony`;
 - importare moduli `.pytony` da altri file Pytony;
@@ -173,7 +173,7 @@ Puoi vedere il linguaggio in azione qui:
 - [examples/exclusive.pytony](/Users/simonetinella/Repositories/PyTony/examples/exclusive.pytony)
 - [examples/python_backend.py](/Users/simonetinella/Repositories/PyTony/examples/python_backend.py)
 
-## Editor Support
+## Supporto Per L'Editor
 
 Pytony ora include una prima integrazione per VS Code in [editors/vscode](/Users/simonetinella/Repositories/PyTony/editors/vscode/README.md).
 
@@ -191,19 +191,23 @@ I file principali sono:
 
 ## Architettura
 
-Il cuore del progetto e piccolo e diretto:
+Il cuore del progetto è piccolo e diretto:
 
 - [pytony/compiler.py](/Users/simonetinella/Repositories/PyTony/pytony/compiler.py): trasforma il lessico Pytony e i costrutti esclusivi in Python.
 - [pytony/runtime.py](/Users/simonetinella/Repositories/PyTony/pytony/runtime.py): esegue il codice transpiliato.
 - [pytony/importer.py](/Users/simonetinella/Repositories/PyTony/pytony/importer.py): abilita l'import di moduli `.pytony`.
 - [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run` e `transpile`.
 
-## Perche Esiste
+## Perché Esiste
 
 Pytony nasce da un'idea semplice: trattare un linguaggio di programmazione come un personaggio con una sua voce precisa.
 
 Non basta rinominare `print` in qualcosa di buffo.
-Serve un lessico coerente, un immaginario chiaro e una compatibilita reale con Python.
+Serve un lessico coerente, un immaginario chiaro e una compatibilità reale con Python.
 
-Pytony prova a stare proprio li:
+Pytony prova a stare proprio lì:
 tra parser, canzone, meme, sintassi e personaggio.
+
+## Licenza
+
+`Pytony` è distribuito come open source sotto licenza [MIT](/Users/simonetinella/Repositories/PyTony/LICENSE).
