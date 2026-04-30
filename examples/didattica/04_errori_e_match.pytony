@@ -1,0 +1,15 @@
+spara_minchiate("Lezione 4: errori e match")
+
+sperimentiamo:
+    scoppia RuntimeError("Piccolo disastro")
+ma_ehi RuntimeError come_monet errore:
+    spara_minchiate(f"Errore gestito: {errore}")
+
+numero = 2
+interludio numero:
+    bridge 1:
+        spara_minchiate("uno")
+    bridge 2:
+        spara_minchiate("due")
+    bridge oh_oh:
+        spara_minchiate("altro")

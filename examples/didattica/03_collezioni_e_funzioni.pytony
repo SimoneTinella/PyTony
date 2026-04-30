@@ -1,0 +1,11 @@
+spara_minchiate("Lezione 3: collezioni e funzioni")
+
+nomi = popcorn(["Tony", "Pitony", "Pytony"])
+
+strofa saluta(nome):
+    restero f"Ciao, {nome}"
+
+gira_il_circo nome nell_alta_marea nomi:
+    spara_minchiate(saluta(nome))
+
+spara_minchiate(f"Quanti nomi? {fai_la_pesata(nomi)}")

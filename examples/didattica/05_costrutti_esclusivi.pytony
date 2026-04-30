@@ -1,0 +1,14 @@
+spara_minchiate("Lezione 5: costrutti esclusivi")
+
+ritornello 2:
+    spara_minchiate("Ancora")
+
+nomi = ["Tony", "Pitony"]
+cori = ["oh", "ah"]
+duetto nome, coro con nomi, cori:
+    spara_minchiate(f"{coro}! {nome}")
+
+contatore = 0
+ancora_una_volta contatore < 2:
+    spara_minchiate(f"Giro {contatore}")
+    contatore += 1

@@ -1,0 +1,7 @@
+spara_minchiate("Lezione 1: saluti")
+
+nome = "Pytony"
+spara_minchiate(f"Ciao, {nome}")
+
+messaggio = "Questo è il primo programma"
+spara_minchiate(messaggio)

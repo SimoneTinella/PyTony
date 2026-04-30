@@ -3,9 +3,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import sys
+import tokenize
 
 from .compiler import PytonySyntaxError
-from .runtime import check_path, run_path, transpile_path
+from .runtime import check_path, format_path, run_path, transpile_path
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -31,6 +32,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     check_parser.add_argument("path", help="Percorso del file Pytony o Python")
 
+    fmt_parser = subparsers.add_parser(
+        "fmt",
+        help="Formatta un file Pytony o Python nello stile canonico di Pytony",
+    )
+    fmt_parser.add_argument("path", help="Percorso del file Pytony o Python")
+    fmt_parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Verifica se il file e gia formattato senza modificarlo",
+    )
+
     return parser
 
 
@@ -53,6 +65,24 @@ def main(argv: list[str] | None = None) -> int:
             sys.stderr.write(f"{error}\n")
             return 1
         sys.stdout.write(f"OK: {args.path}\n")
+        return 0
+
+    if args.command == "fmt":
+        try:
+            _, changed = format_path(Path(args.path), write=not args.check)
+        except (PytonySyntaxError, SyntaxError, tokenize.TokenError) as error:
+            sys.stderr.write(f"{error}\n")
+            return 1
+        if args.check:
+            if changed:
+                sys.stderr.write(f"Needs formatting: {args.path}\n")
+                return 1
+            sys.stdout.write(f"Already formatted: {args.path}\n")
+            return 0
+        if changed:
+            sys.stdout.write(f"Formatted: {args.path}\n")
+        else:
+            sys.stdout.write(f"Already formatted: {args.path}\n")
         return 0
 
     parser.error(f"Comando non supportato: {args.command}")

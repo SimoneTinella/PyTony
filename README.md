@@ -138,6 +138,7 @@ In questa versione Pytony permette già di:
 - importare moduli `.pytony` da altri file Pytony;
 - transpiliare il codice Pytony in Python leggibile;
 - validare un file con `pytony check`;
+- formattare il sorgente con `pytony fmt`;
 - usare alias per tutte le keyword Python;
 - usare alias per un primo set di built-in molto comuni;
 - usare costrutti esclusivi come `ritornello`, `duetto` e `ancora_una_volta`;
@@ -154,6 +155,7 @@ pytony run examples/builtins.pytony
 pytony run examples/exclusive.pytony
 pytony transpile examples/hello.pytony
 pytony check examples/hello.pytony
+pytony fmt examples/exclusive.pytony
 pytony run examples/python_backend.py
 ```
 
@@ -172,6 +174,29 @@ Puoi vedere il linguaggio in azione qui:
 - [examples/builtins.pytony](/Users/simonetinella/Repositories/PyTony/examples/builtins.pytony)
 - [examples/exclusive.pytony](/Users/simonetinella/Repositories/PyTony/examples/exclusive.pytony)
 - [examples/python_backend.py](/Users/simonetinella/Repositories/PyTony/examples/python_backend.py)
+
+## Percorso Didattico
+
+`Pytony` ora include anche un primo percorso didattico pensato per chi vuole:
+
+- imparare i concetti base della programmazione;
+- vedere come gli stessi concetti si esprimono in `Pytony`;
+- capire come si sviluppa internamente il linguaggio.
+
+Documenti principali:
+
+- [docs/PERCORSO_DIDATTICO.md](/Users/simonetinella/Repositories/PyTony/docs/PERCORSO_DIDATTICO.md)
+- [docs/CONCETTI_FONDAMENTALI.md](/Users/simonetinella/Repositories/PyTony/docs/CONCETTI_FONDAMENTALI.md)
+- [docs/GUIDA_AI_COSTRUTTI.md](/Users/simonetinella/Repositories/PyTony/docs/GUIDA_AI_COSTRUTTI.md)
+- [docs/COME_SI_SVILUPPA_PYTONY.md](/Users/simonetinella/Repositories/PyTony/docs/COME_SI_SVILUPPA_PYTONY.md)
+
+Esempi didattici:
+
+- [examples/didattica/01_saluti.pytony](/Users/simonetinella/Repositories/PyTony/examples/didattica/01_saluti.pytony)
+- [examples/didattica/02_condizioni_e_loop.pytony](/Users/simonetinella/Repositories/PyTony/examples/didattica/02_condizioni_e_loop.pytony)
+- [examples/didattica/03_collezioni_e_funzioni.pytony](/Users/simonetinella/Repositories/PyTony/examples/didattica/03_collezioni_e_funzioni.pytony)
+- [examples/didattica/04_errori_e_match.pytony](/Users/simonetinella/Repositories/PyTony/examples/didattica/04_errori_e_match.pytony)
+- [examples/didattica/05_costrutti_esclusivi.pytony](/Users/simonetinella/Repositories/PyTony/examples/didattica/05_costrutti_esclusivi.pytony)
 
 ## Supporto Per L'Editor
 
@@ -196,7 +221,8 @@ Il cuore del progetto è piccolo e diretto:
 - [pytony/compiler.py](/Users/simonetinella/Repositories/PyTony/pytony/compiler.py): trasforma il lessico Pytony e i costrutti esclusivi in Python.
 - [pytony/runtime.py](/Users/simonetinella/Repositories/PyTony/pytony/runtime.py): esegue il codice transpiliato.
 - [pytony/importer.py](/Users/simonetinella/Repositories/PyTony/pytony/importer.py): abilita l'import di moduli `.pytony`.
-- [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run` e `transpile`.
+- [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run`, `transpile`, `check` e `fmt`.
+- [pytony/formatter.py](/Users/simonetinella/Repositories/PyTony/pytony/formatter.py): applica il formato canonico del sorgente Pytony.
 
 ## Perché Esiste
 

@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 
 from .compiler import transpile_source
+from .formatter import format_source
 from .importer import install_import_hook
 
 
@@ -22,6 +23,16 @@ def check_path(path: str | Path) -> str:
     python_source = transpile_path(source_path)
     compile(python_source, str(source_path), "exec")
     return python_source
+
+
+def format_path(path: str | Path, *, write: bool = False) -> tuple[str, bool]:
+    source_path = Path(path)
+    original_source = load_source(source_path)
+    formatted_source = format_source(original_source)
+    changed = formatted_source != original_source
+    if write and changed:
+        source_path.write_text(formatted_source, encoding="utf-8")
+    return formatted_source, changed
 
 
 def run_path(path: str | Path, argv: list[str] | None = None) -> None:

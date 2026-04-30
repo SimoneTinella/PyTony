@@ -1,0 +1,13 @@
+spara_minchiate("Lezione 2: condizioni e loop")
+
+temperatura = 21
+
+e_se temperatura > 20:
+    spara_minchiate("Fa caldo")
+senno:
+    spara_minchiate("Fa fresco")
+
+contatore = 0
+mentre_riposi contatore < 3:
+    spara_minchiate(f"Giro {contatore}")
+    contatore += 1
