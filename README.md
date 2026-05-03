@@ -139,6 +139,7 @@ In questa versione Pytony permette già di:
 - transpiliare il codice Pytony in Python leggibile;
 - validare un file con `pytony check`;
 - formattare il sorgente con `pytony fmt`;
+- controllare stile e coerenza con `pytony lint`;
 - usare alias per tutte le keyword Python;
 - usare alias per un primo set di built-in molto comuni;
 - usare costrutti esclusivi come `ritornello`, `duetto` e `ancora_una_volta`;
@@ -156,6 +157,7 @@ pytony run examples/exclusive.pytony
 pytony transpile examples/hello.pytony
 pytony check examples/hello.pytony
 pytony fmt examples/exclusive.pytony
+pytony lint examples/exclusive.pytony
 pytony run examples/python_backend.py
 ```
 
@@ -206,6 +208,8 @@ Questa integrazione aggiunge:
 
 - riconoscimento dei file `.pytony`;
 - syntax highlighting per alias, built-in e costrutti esclusivi;
+- snippet per i blocchi più comuni e per i costrutti esclusivi;
+- diagnostica live in VS Code basata su `pytony lint`;
 - regole base di indentazione e auto-closing.
 
 I file principali sono:
@@ -213,6 +217,7 @@ I file principali sono:
 - [editors/vscode/package.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/package.json)
 - [editors/vscode/language-configuration.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/language-configuration.json)
 - [editors/vscode/syntaxes/pytony.tmLanguage.json](/Users/simonetinella/Repositories/PyTony/editors/vscode/syntaxes/pytony.tmLanguage.json)
+- [editors/vscode/snippets/pytony.code-snippets](/Users/simonetinella/Repositories/PyTony/editors/vscode/snippets/pytony.code-snippets)
 
 ## Architettura
 
@@ -221,8 +226,9 @@ Il cuore del progetto è piccolo e diretto:
 - [pytony/compiler.py](/Users/simonetinella/Repositories/PyTony/pytony/compiler.py): trasforma il lessico Pytony e i costrutti esclusivi in Python.
 - [pytony/runtime.py](/Users/simonetinella/Repositories/PyTony/pytony/runtime.py): esegue il codice transpiliato.
 - [pytony/importer.py](/Users/simonetinella/Repositories/PyTony/pytony/importer.py): abilita l'import di moduli `.pytony`.
-- [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run`, `transpile`, `check` e `fmt`.
+- [pytony/cli.py](/Users/simonetinella/Repositories/PyTony/pytony/cli.py): espone i comandi `run`, `transpile`, `check`, `fmt` e `lint`.
 - [pytony/formatter.py](/Users/simonetinella/Repositories/PyTony/pytony/formatter.py): applica il formato canonico del sorgente Pytony.
+- [pytony/linter.py](/Users/simonetinella/Repositories/PyTony/pytony/linter.py): rileva problemi di stile e coerenza del sorgente.
 
 ## Perché Esiste
 
@@ -236,4 +242,4 @@ tra parser, canzone, meme, sintassi e personaggio.
 
 ## Licenza
 
-`Pytony` è distribuito come open source sotto licenza [MIT](/Users/simonetinella/Repositories/PyTony/LICENSE).
+`Pytony` è distribuito come open source sotto licenza [MIT](/Users/simonetinella/Repositories/PyTony/LICENSE.md).

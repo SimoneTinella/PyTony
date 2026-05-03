@@ -1,0 +1,71 @@
+{
+  "Blocco e_se": {
+    "prefix": "e_se",
+    "body": [
+      "e_se ${1:condizione}:",
+      "    ${2:spara_minchiate(\"Oh\")}"
+    ],
+    "description": "Crea un blocco if in stile Pytony."
+  },
+  "Strofa": {
+    "prefix": "strofa",
+    "body": [
+      "strofa ${1:nome_funzione}(${2:argomenti}):",
+      "    ${3:restero solo_una_macchia}"
+    ],
+    "description": "Crea una funzione Pytony."
+  },
+  "Mentre Riposi": {
+    "prefix": "mentre_riposi",
+    "body": [
+      "mentre_riposi ${1:condizione}:",
+      "    ${2:spara_minchiate(\"ancora\")}"
+    ],
+    "description": "Crea un ciclo while Pytony."
+  },
+  "Ritornello": {
+    "prefix": "ritornello",
+    "body": [
+      "ritornello ${1:3}:",
+      "    ${2:spara_minchiate(\"ancora\")}"
+    ],
+    "description": "Crea un loop contato esclusivo di Pytony."
+  },
+  "Duetto": {
+    "prefix": "duetto",
+    "body": [
+      "duetto ${1:nome}, ${2:coro} con ${3:nomi}, ${4:cori}:",
+      "    ${5:spara_minchiate(nome, coro)}"
+    ],
+    "description": "Crea un loop zip-style esclusivo di Pytony."
+  },
+  "Ancora Una Volta": {
+    "prefix": "ancora_una_volta",
+    "body": [
+      "ancora_una_volta ${1:condizione}:",
+      "    ${2:spara_minchiate(\"si va avanti\")}"
+    ],
+    "description": "Crea un blocco do-while esclusivo di Pytony."
+  },
+  "Interludio Match": {
+    "prefix": "interludio",
+    "body": [
+      "interludio ${1:valore}:",
+      "    bridge ${2:pattern}:",
+      "        ${3:spara_minchiate(\"colpito\")}",
+      "    bridge oh_oh:",
+      "        ${4:spara_minchiate(\"fallback\")}"
+    ],
+    "description": "Crea uno scheletro match/case in lessico Pytony."
+  },
+  "Sperimentiamo": {
+    "prefix": "sperimentiamo",
+    "body": [
+      "sperimentiamo:",
+      "    ${1:spara_minchiate(\"provo\")}",
+      "ma_ehi ${2:Exception} come_monet ${3:errore}:",
+      "    ${4:spara_minchiate(errore)}"
+    ],
+    "description": "Crea un blocco try/except in stile Pytony."
+  }
+}

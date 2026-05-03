@@ -6,7 +6,8 @@ import sys
 import tokenize
 
 from .compiler import PytonySyntaxError
-from .runtime import check_path, format_path, run_path, transpile_path
+from .linter import format_lint_issue
+from .runtime import check_path, format_path, lint_path, run_path, transpile_path
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -42,6 +43,12 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Verifica se il file e gia formattato senza modificarlo",
     )
+
+    lint_parser = subparsers.add_parser(
+        "lint",
+        help="Controlla stile e coerenza del sorgente Pytony o Python",
+    )
+    lint_parser.add_argument("path", help="Percorso del file Pytony o Python")
 
     return parser
 
@@ -84,6 +91,20 @@ def main(argv: list[str] | None = None) -> int:
         else:
             sys.stdout.write(f"Already formatted: {args.path}\n")
         return 0
+
+    if args.command == "lint":
+        try:
+            issues = lint_path(Path(args.path))
+        except (PytonySyntaxError, SyntaxError, tokenize.TokenError) as error:
+            sys.stderr.write(f"{error}\n")
+            return 1
+        if not issues:
+            sys.stdout.write(f"Clean: {args.path}\n")
+            return 0
+        for issue in issues:
+            sys.stderr.write(f"{format_lint_issue(args.path, issue)}\n")
+        sys.stderr.write(f"{len(issues)} issue(s) found in {args.path}\n")
+        return 1
 
     parser.error(f"Comando non supportato: {args.command}")
     return 2

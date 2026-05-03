@@ -6,6 +6,7 @@ import sys
 from .compiler import transpile_source
 from .formatter import format_source
 from .importer import install_import_hook
+from .linter import LintIssue, lint_source
 
 
 def load_source(path: str | Path) -> str:
@@ -33,6 +34,12 @@ def format_path(path: str | Path, *, write: bool = False) -> tuple[str, bool]:
     if write and changed:
         source_path.write_text(formatted_source, encoding="utf-8")
     return formatted_source, changed
+
+
+def lint_path(path: str | Path) -> list[LintIssue]:
+    source_path = Path(path)
+    strict = source_path.suffix == ".pytony"
+    return lint_source(load_source(source_path), strict=strict)
 
 
 def run_path(path: str | Path, argv: list[str] | None = None) -> None:

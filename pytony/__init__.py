@@ -3,6 +3,14 @@
 from .compiler import transpile_source
 from .formatter import format_source
 from .importer import install_import_hook
+from .linter import lint_source
 from .parser import parse_expression, parse_module
 
-__all__ = ["format_source", "install_import_hook", "parse_expression", "parse_module", "transpile_source"]
+__all__ = [
+    "format_source",
+    "install_import_hook",
+    "lint_source",
+    "parse_expression",
+    "parse_module",
+    "transpile_source",
+]

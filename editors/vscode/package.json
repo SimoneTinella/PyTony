@@ -5,13 +5,59 @@
   "version": "0.1.0",
   "publisher": "local",
   "license": "MIT",
+  "main": "./extension.js",
   "engines": {
     "vscode": "^1.85.0"
   },
+  "activationEvents": [
+    "onLanguage:pytony",
+    "onCommand:pytony.runLint",
+    "workspaceContains:**/*.pytony"
+  ],
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Linters"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "pytony.runLint",
+        "title": "Pytony: Esegui Lint Sul File Corrente"
+      }
+    ],
+    "configuration": {
+      "title": "Pytony",
+      "properties": {
+        "pytony.lint.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Abilita la diagnostica live basata su `pytony lint`."
+        },
+        "pytony.lint.command": {
+          "type": "string",
+          "default": "pytony",
+          "description": "Comando usato per eseguire il lint. Per esempio `pytony` oppure `python3`."
+        },
+        "pytony.lint.args": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Argomenti da anteporre a `lint`. Utile per configurazioni come `['-m', 'pytony']`."
+        },
+        "pytony.lint.run": {
+          "type": "string",
+          "enum": [
+            "onType",
+            "onSave",
+            "off"
+          ],
+          "default": "onType",
+          "description": "Decide quando aggiornare la diagnostica live di Pytony."
+        }
+      }
+    },
     "languages": [
       {
         "id": "pytony",
@@ -30,6 +76,12 @@
         "language": "pytony",
         "scopeName": "source.pytony",
         "path": "./syntaxes/pytony.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "pytony",
+        "path": "./snippets/pytony.code-snippets"
       }
     ]
   }
